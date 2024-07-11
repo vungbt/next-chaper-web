@@ -1,0 +1,82 @@
+html,
+html[data-theme='light'] {
+  // Brand
+  --primary-color: #2e9570;
+  --secondary-color: #243754;
+  --tertiary-color: #ffc05d;
+
+  // Default
+  --green: #2e9570;
+  --indigo: #243754;
+  --yellow: #ffc05d;
+  --orange: #fd682a;
+  --red: #ce0024;
+  --slate: #64748b;
+  --black: #1b1b1b;
+  --background: #f7fbe5;
+
+  // --white: #ffffff;
+  // --dark: var(--black);
+  // --success: var(--green);
+  // --danger: var(--red);
+  // --warning: var(--yellow);
+
+  // Green
+  --green-900: #2e9570;
+  --green-800: #47a181;
+  --green-700: #5fae92;
+  --green-600: #78baa2;
+  --green-500: #90c7b3;
+
+  // Indigo
+  --indigo-900: #243754;
+  --indigo-800: #3e4f68;
+  --indigo-700: #58667c;
+  --indigo-600: #717e90;
+  --indigo-500: #8b95a4;
+
+  // Yellow
+  --yellow-900: #ffc05d;
+  --yellow-800: #ffc770;
+  --yellow-700: #ffcf83;
+  --yellow-600: #ffd696;
+  --yellow-500: #ffdea9;
+
+  // Orange
+  --orange-900: #fd682a;
+  --orange-800: #fd7a43;
+  --orange-700: #fd8c5c;
+  --orange-600: #fe9d75;
+  --orange-500: #feaf8e;
+
+  // red
+  --red-900: #ce0024;
+  --red-800: #d41e3e;
+  --red-700: #da3c58;
+  --red-600: #df5a71;
+  --red-500: #e5788b;
+
+  // slate
+  --slate-900: #64748b;
+  --slate-800: #768499;
+  --slate-700: #8895a6;
+  --slate-600: #9ba5b4;
+  --slate-500: #adb5c2;
+
+  // black
+  --black-900: #1b1b1b;
+  --black-800: #363636;
+  --black-700: #515151;
+  --black-600: #6b6b6b;
+  --black-500: #868686;
+
+  // background
+  --bg-900: #f7fbe5;
+  --bg-800: #f8fbe8;
+  --bg-700: #f9fceb;
+  --bg-600: #fafcee;
+  --bg-500: #fffdfa;
+
+  // FONT FAMILY
+  --font-primary: 'Roboto Mono', monospace;
+}
