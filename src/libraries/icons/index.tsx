@@ -1,6 +1,9 @@
 import { CSSProperties, FC } from 'react';
 import Loading from './loading';
 import LoadingV2 from './loading-v2';
+import ArrowRight from './arrow-right';
+import Login from './login';
+import SearchNormal from './search-normal';
 
 export type IconProps = {
   className?: string;
@@ -11,7 +14,7 @@ export type IconProps = {
 
 export type Icon = FC<IconProps>;
 
-export type IconName = 'loading' | 'loading-v2';
+export type IconName = 'loading' | 'loading-v2' | 'arrow-right' | 'login' | 'search-normal';
 
 export type IconsType = Record<IconName, Icon>;
 
@@ -21,6 +24,15 @@ export const Icons: IconsType = {
   },
   'loading-v2': (props: IconProps) => {
     return <LoadingV2 {...props} />;
+  },
+  'arrow-right': (props: IconProps) => {
+    return <ArrowRight {...props} />;
+  },
+  login: (props: IconProps) => {
+    return <Login {...props} />;
+  },
+  'search-normal': (props: IconProps) => {
+    return <SearchNormal {...props} />;
   }
 };
 

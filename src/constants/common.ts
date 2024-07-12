@@ -1,3 +1,5 @@
+import HttpStatusCode from 'http-status-codes';
+
 export const PAGINATION = {
   limit: 10,
   page: 1
@@ -18,3 +20,5 @@ export const FallbackImage = {
     'https://res.cloudinary.com/dgxciqlts/image/upload/v1709873667/assets/avatar-1_r0wv7q.webp',
   thumbnail: ''
 };
+
+export const HttpStatus = HttpStatusCode;

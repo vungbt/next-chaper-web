@@ -31,8 +31,40 @@
   }
 
   ::placeholder {
-    color: var(--slate-700) !important;
+    color: var(--black-500) !important;
     font-size: 0.875rem /* 14px */ !important;
     line-height: 1.25rem /* 20px */ !important;
+  }
+}
+
+// form label
+.form-label {
+  @apply relative text-sm;
+
+  &__required {
+    &::before {
+      margin-inline-end: 0.25rem;
+      content: '*';
+      @apply inline-block font-primary text-sm leading-[1px] text-danger;
+    }
+  }
+}
+
+// input custom
+.input-custom {
+  &:hover {
+    .icon-left,
+    .icon-right {
+      @apply text-green-700 transition-all ease-in-out;
+    }
+  }
+}
+
+.input-search-custom {
+  &:hover {
+    .icon-left,
+    .icon-right {
+      @apply bg-green-700 transition-all ease-in-out;
+    }
   }
 }
