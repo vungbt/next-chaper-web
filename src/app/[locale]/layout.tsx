@@ -1,3 +1,4 @@
+import BaseInit from '@/libraries/base-init';
 import TopLoader from '@/libraries/top-loader';
 import { ELocale, getDictionary } from '@/utils/dictionaries';
 import { NextIntlClientProvider } from 'next-intl';
@@ -24,6 +25,7 @@ export default async function RootLayout({
       </head>
       <body suppressHydrationWarning={true}>
         <NextIntlClientProvider locale={params.locale} messages={messages}>
+          <BaseInit />
           <main>{renderNode}</main>
           <TopLoader />
           <Toaster />

@@ -27,7 +27,7 @@ export function UploadPreview({ items, className, onRemove }: UploadPreviewProps
       {itemRender.map((item) => (
         <div
           key={item.id}
-          className="relative rounded-lg w-fit h-fit border border-solid border-gray-100"
+          className="relative rounded-lg w-fit h-fit border border-solid border-slate-500"
         >
           <Image
             className="rounded-lg"

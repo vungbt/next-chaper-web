@@ -57,7 +57,7 @@ export default function TestPage() {
 
   return (
     <div>
-      <div className="bg-gray-200 p-6 rounded-2xl mt-5">
+      <div className="p-6 rounded-2xl mt-5">
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -105,7 +105,7 @@ export default function TestPage() {
                   isRequired={true}
                   label="File upload"
                   name="thumbnail"
-                  isTouched={touched.thumbnails !== undefined}
+                  isTouched={touched.thumbnail !== undefined}
                   value={values?.thumbnail}
                   placeholder="Drop or Drag a photo"
                   subPlaceholder="Supported png, jpeg, jpg, webp, gif"

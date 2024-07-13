@@ -1,7 +1,12 @@
 {
   "welcome": "Welcome",
+  "updatedAt": "Updated at",
+  "createdAt": "Created at",
+  "actions": "Actions",
+  "no": "No",
   "common": {
     "email": "Email",
+    "username": "Username",
     "password": "Password",
     "forgotPassword": "Forgot password?",
     "login": "Login",
@@ -11,6 +16,7 @@
     "loginHere": "Login here",
     "firstName": "First name",
     "lastName": "Last name",
+    "name": "Name",
     "phoneCode": "Phone code",
     "phoneNumber": "Phone number",
     "confirmPassword": "Confirm password",
@@ -27,6 +33,7 @@
     "categories": "Categories",
     "title": "Title",
     "link": "Link",
+    "slug": "Slug",
     "supported": "Supported {type}"
   },
   "placeholder": {
@@ -45,6 +52,7 @@
     "min": "{label} must be at least {number} characters",
     "max": "{label} must be at highest {number} characters",
     "passwordInvalid": "Password must contain at least one lowercase, uppercase and one special character",
+    "usernameInvalid": "Username invalid",
     "optionRequired": "Please select a option",
     "passwordMustMatch": "Confirm password must match with password",
     "permissionDenied": "Permission denied",

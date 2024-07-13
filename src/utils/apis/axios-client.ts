@@ -1,12 +1,13 @@
 import { IResponseBase } from '@/types';
 import axios, {
   AxiosError,
-  InternalAxiosRequestConfig,
   AxiosRequestHeaders,
-  AxiosResponse
+  AxiosResponse,
+  InternalAxiosRequestConfig
 } from 'axios';
 import { format } from 'date-fns';
 import queryString from 'query-string';
+import { getSession } from '../session';
 
 const getLabelLogRequest = (config: InternalAxiosRequestConfig) => {
   const method = config?.method?.toUpperCase();
@@ -91,10 +92,10 @@ export type ListRes<T = any> = Res<{
 }>;
 
 export const getAccessToken = async () => {
-  // const session = await getSession();
-  // if (session) {
-  //   return session?.accessToken;
-  // }
+  const sessionSS = await getSession();
+  if (sessionSS) {
+    return sessionSS?.token?.accessToken;
+  }
   return null;
 };
 

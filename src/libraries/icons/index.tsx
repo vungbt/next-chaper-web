@@ -13,6 +13,13 @@ import ChevronRight from './chevron-right';
 import Close from './close';
 import CloseCircle from './close-circle';
 import CloseCircleBold from './close-circle-bold';
+import Eye from './eye';
+import EyeSlash from './eye-slash';
+import EditIcon from './edit-icon';
+import Trash from './trash';
+import TrashSolid from './trash-solid';
+import CaretDownSolid from './caret-down-solid';
+import CaretUpSolid from './caret-up-solid';
 
 export type IconProps = {
   className?: string;
@@ -37,7 +44,14 @@ export type IconName =
   | 'chevron-left'
   | 'close-circle-bold'
   | 'close-circle'
-  | 'close';
+  | 'close'
+  | 'eye'
+  | 'eye-slash'
+  | 'edit-icon'
+  | 'trash'
+  | 'trash-solid'
+  | 'caret-up-solid'
+  | 'caret-down-solid';
 
 export type IconsType = Record<IconName, Icon>;
 
@@ -83,6 +97,27 @@ export const Icons: IconsType = {
   },
   'close-circle-bold': (props: IconProps) => {
     return <CloseCircleBold {...props} />;
+  },
+  eye: (props: IconProps) => {
+    return <Eye {...props} />;
+  },
+  'eye-slash': (props: IconProps) => {
+    return <EyeSlash {...props} />;
+  },
+  'edit-icon': (props: IconProps) => {
+    return <EditIcon {...props} />;
+  },
+  trash: (props: IconProps) => {
+    return <Trash {...props} />;
+  },
+  'trash-solid': (props: IconProps) => {
+    return <TrashSolid {...props} />;
+  },
+  'caret-down-solid': (props: IconProps) => {
+    return <CaretDownSolid {...props} />;
+  },
+  'caret-up-solid': (props: IconProps) => {
+    return <CaretUpSolid {...props} />;
   }
 };
 
