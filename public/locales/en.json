@@ -22,10 +22,12 @@
     "showWith": "Show with",
     "description": "Description",
     "thumbnails": "Thumbnails",
+    "thumbnail": "Thumbnail",
     "content": "Content",
     "categories": "Categories",
     "title": "Title",
-    "link": "Link"
+    "link": "Link",
+    "supported": "Supported {type}"
   },
   "placeholder": {
     "enter": "Enter {label}",
