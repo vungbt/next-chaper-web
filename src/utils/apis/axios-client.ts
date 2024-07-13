@@ -17,7 +17,7 @@ const getLabelLogRequest = (config: InternalAxiosRequestConfig) => {
 };
 
 export const instance = axios.create({
-  baseURL: process.env.RESTFUL_API_URL,
+  baseURL: process.env.API_DOMAIN,
   timeout: 10000,
   paramsSerializer: (params: Record<string, any>) => queryString.stringify(params)
 });

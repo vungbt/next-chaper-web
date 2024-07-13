@@ -23,9 +23,9 @@ export const IconViewSize = ({
       <RenderIcon
         className={clsx(
           {
-            '!h-5 !w-5 min-w-5': size === 'large',
-            '!h-4.5 !w-4.5 min-w-4.5': size === 'middle',
-            '!h-4 !w-4 min-w-4': size === 'small'
+            'h-5 w-5 min-w-5': size === 'large',
+            'h-4.5 w-4.5 min-w-4.5': size === 'middle',
+            'h-4 w-4 min-w-4': size === 'small'
           },
           className
         )}
