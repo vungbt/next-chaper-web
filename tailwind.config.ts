@@ -2,8 +2,8 @@ import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/libraries/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/@views/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
@@ -139,6 +139,26 @@ const config: Config = {
       },
       borderRadius: {
         '4xl': '2.25rem'
+      },
+      fontSize: {
+        h1: '48px',
+        h2: '40px',
+        h3: '33px',
+        h4: '28px',
+        h5: '23px',
+        title1: '19px',
+        title2: '16px',
+        body: '13px',
+        caption: '11px'
+      },
+      boxShadow: {
+        'green-hover': '0px 3px 8px 0px var(--green-500)',
+        'indigo-hover': '0px 3px 8px 0px var(--indigo-500)',
+        'yellow-hover': '0px 3px 8px 0px var(--yellow-500)',
+        'orange-hover': '0px 3px 8px 0px var(--orange-500)',
+        'red-hover': '0px 3px 8px 0px var(--red-500)',
+        'black-hover': '0px 3px 8px 0px var(--black-500)',
+        'dark-opacity': '0px 2px 10px 0px rgba(0, 0, 0, 0.12)'
       }
     }
   },

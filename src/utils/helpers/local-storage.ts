@@ -1,6 +1,11 @@
 /* eslint-disable no-empty */
 export enum EKeyStorage {
-  THEME_MODE = 'theme_mode'
+  LOCALE = 'locale',
+  THEME_MODE = 'theme_mode',
+  UI = 'ui',
+  SESSION = 'session',
+  VIEW_ROLE = 'view_role',
+  PROFILE = 'profile'
 }
 
 const localStorageHelper = {

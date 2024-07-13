@@ -1,6 +1,25 @@
 import { CSSProperties, FC } from 'react';
 import Loading from './loading';
 import LoadingV2 from './loading-v2';
+import ArrowRight from './arrow-right';
+import Login from './login';
+import SearchNormal from './search-normal';
+import ImageIcon from './image-icon';
+import CheckIcon from './check-icon';
+import ChevronDown from './chevron-down';
+import ChevronUp from './chevron-up';
+import ChevronLeft from './chevron-left';
+import ChevronRight from './chevron-right';
+import Close from './close';
+import CloseCircle from './close-circle';
+import CloseCircleBold from './close-circle-bold';
+import Eye from './eye';
+import EyeSlash from './eye-slash';
+import EditIcon from './edit-icon';
+import Trash from './trash';
+import TrashSolid from './trash-solid';
+import CaretDownSolid from './caret-down-solid';
+import CaretUpSolid from './caret-up-solid';
 
 export type IconProps = {
   className?: string;
@@ -11,7 +30,28 @@ export type IconProps = {
 
 export type Icon = FC<IconProps>;
 
-export type IconName = 'loading' | 'loading-v2';
+export type IconName =
+  | 'loading'
+  | 'loading-v2'
+  | 'arrow-right'
+  | 'login'
+  | 'search-normal'
+  | 'image-icon'
+  | 'check-icon'
+  | 'chevron-down'
+  | 'chevron-up'
+  | 'chevron-right'
+  | 'chevron-left'
+  | 'close-circle-bold'
+  | 'close-circle'
+  | 'close'
+  | 'eye'
+  | 'eye-slash'
+  | 'edit-icon'
+  | 'trash'
+  | 'trash-solid'
+  | 'caret-up-solid'
+  | 'caret-down-solid';
 
 export type IconsType = Record<IconName, Icon>;
 
@@ -21,6 +61,63 @@ export const Icons: IconsType = {
   },
   'loading-v2': (props: IconProps) => {
     return <LoadingV2 {...props} />;
+  },
+  'arrow-right': (props: IconProps) => {
+    return <ArrowRight {...props} />;
+  },
+  login: (props: IconProps) => {
+    return <Login {...props} />;
+  },
+  'search-normal': (props: IconProps) => {
+    return <SearchNormal {...props} />;
+  },
+  'image-icon': (props: IconProps) => {
+    return <ImageIcon {...props} />;
+  },
+  'check-icon': (props: IconProps) => {
+    return <CheckIcon {...props} />;
+  },
+  'chevron-down': (props: IconProps) => {
+    return <ChevronDown {...props} />;
+  },
+  'chevron-up': (props: IconProps) => {
+    return <ChevronUp {...props} />;
+  },
+  'chevron-left': (props: IconProps) => {
+    return <ChevronLeft {...props} />;
+  },
+  'chevron-right': (props: IconProps) => {
+    return <ChevronRight {...props} />;
+  },
+  close: (props: IconProps) => {
+    return <Close {...props} />;
+  },
+  'close-circle': (props: IconProps) => {
+    return <CloseCircle {...props} />;
+  },
+  'close-circle-bold': (props: IconProps) => {
+    return <CloseCircleBold {...props} />;
+  },
+  eye: (props: IconProps) => {
+    return <Eye {...props} />;
+  },
+  'eye-slash': (props: IconProps) => {
+    return <EyeSlash {...props} />;
+  },
+  'edit-icon': (props: IconProps) => {
+    return <EditIcon {...props} />;
+  },
+  trash: (props: IconProps) => {
+    return <Trash {...props} />;
+  },
+  'trash-solid': (props: IconProps) => {
+    return <TrashSolid {...props} />;
+  },
+  'caret-down-solid': (props: IconProps) => {
+    return <CaretDownSolid {...props} />;
+  },
+  'caret-up-solid': (props: IconProps) => {
+    return <CaretUpSolid {...props} />;
   }
 };
 
