@@ -38,7 +38,8 @@ export function PortalAdminLayout(props: { children: ReactNode; menus?: SidebarM
         htmlFor="admin-sidebar"
         className={clsx(
           'admin-sidebar min-w-[212px] w-[212px] p-4 border-r border-solid border-slate-500 border-opacity-15 h-full max-h-screen overflow-y-auto'
-        )}>
+        )}
+      >
         {/* avatar */}
         <div className="flex items-center gap-2 p-2">
           <Image

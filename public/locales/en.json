@@ -36,6 +36,9 @@
     "slug": "Slug",
     "supported": "Supported {type}"
   },
+  "selecting": {
+    "charCount": "{count}/{max} {type, select, char {characters} word {words} other {}}"
+  },
   "placeholder": {
     "enter": "Enter {label}",
     "shareYourThoughts": "Share your thoughts..."
