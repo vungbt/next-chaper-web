@@ -1,5 +1,5 @@
 import { apiGetAllCategory } from '@/apis/categories';
-import { ESortOrder, ICategory, IFindManyCategory } from '@/types';
+import { ESortOrder, ICategory, IFindManyCategory, IMetadata, IPaginationInput } from '@/types';
 import { useEffect, useState } from 'react';
 
 type AdminCategoryUtilsResult = {
@@ -8,12 +8,19 @@ type AdminCategoryUtilsResult = {
   loadingDelete: boolean;
   onDelete: (item: ICategory) => void;
   sortActives: Record<string, ESortOrder>[];
+  metadata?: IMetadata;
   onSort?: (values: Record<string, ESortOrder>[]) => void;
+  setSearchValue: (value: string) => void;
+  pagination: IPaginationInput;
+  setPagination: (value: IPaginationInput) => void;
 };
+
 export function AdminCategoryUtils(): AdminCategoryUtilsResult {
   const [loading, setLoading] = useState<boolean>(false);
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [loadingDelete] = useState<boolean>(false);
+  const [metadata, setMetadata] = useState<IMetadata>();
+  const [pagination, setPagination] = useState<IPaginationInput>({ page: 1, limit: 30 });
   // sort action
   const [sortActives, setSortActives] = useState<Record<string, ESortOrder>[]>([]);
 
@@ -29,6 +36,8 @@ export function AdminCategoryUtils(): AdminCategoryUtilsResult {
       const res = await apiGetAllCategory(params);
       setLoading(false);
       if (res?.data) {
+        const { data, ...metadata } = res;
+        setMetadata(metadata);
         setCategories(res.data);
       }
     } catch (error) {
@@ -44,12 +53,18 @@ export function AdminCategoryUtils(): AdminCategoryUtilsResult {
     setSortActives(values);
   };
 
+  const setSearchValue = (value: string) => console.log('Value search');
+
   return {
     loading,
     items: categories,
     loadingDelete,
     onDelete,
     sortActives,
-    onSort
+    metadata,
+    pagination,
+    setPagination,
+    onSort,
+    setSearchValue
   };
 }

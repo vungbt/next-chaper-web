@@ -116,6 +116,10 @@ const config: Config = {
         700: 'var(--bg-700)',
         600: 'var(--bg-600)',
         500: 'var(--bg-500)'
+      },
+      gray: {
+        DEFAULT: 'var(--gray-100)',
+        100: 'var(--gray-100)'
       }
     },
     extend: {

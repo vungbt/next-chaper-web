@@ -20,6 +20,19 @@ import Trash from './trash';
 import TrashSolid from './trash-solid';
 import CaretDownSolid from './caret-down-solid';
 import CaretUpSolid from './caret-up-solid';
+import Notification from './notification';
+import SidebarRight from './sidebar-right';
+import SidebarLeft from './sidebar-left';
+import Setting from './setting';
+import SettingBold from './setting-bold';
+import Search from './search';
+import Graph from './graph';
+import BoxAdd from './box-add';
+import Add from './add';
+import ArrowLeft from './arrow-left';
+import Success from './success';
+import Star from './star';
+import Sort from './sort';
 
 export type IconProps = {
   className?: string;
@@ -51,7 +64,20 @@ export type IconName =
   | 'trash'
   | 'trash-solid'
   | 'caret-up-solid'
-  | 'caret-down-solid';
+  | 'caret-down-solid'
+  | 'notification'
+  | 'sidebar-right'
+  | 'sidebar-left'
+  | 'setting'
+  | 'setting-bold'
+  | 'search'
+  | 'graph'
+  | 'box-add'
+  | 'add'
+  | 'arrow-left'
+  | 'sort'
+  | 'star'
+  | 'success';
 
 export type IconsType = Record<IconName, Icon>;
 
@@ -118,6 +144,45 @@ export const Icons: IconsType = {
   },
   'caret-up-solid': (props: IconProps) => {
     return <CaretUpSolid {...props} />;
+  },
+  notification: (props: IconProps) => {
+    return <Notification {...props} />;
+  },
+  'sidebar-right': (props: IconProps) => {
+    return <SidebarRight {...props} />;
+  },
+  'sidebar-left': (props: IconProps) => {
+    return <SidebarLeft {...props} />;
+  },
+  setting: (props: IconProps) => {
+    return <Setting {...props} />;
+  },
+  'setting-bold': (props: IconProps) => {
+    return <SettingBold {...props} />;
+  },
+  search: (props: IconProps) => {
+    return <Search {...props} />;
+  },
+  graph: (props: IconProps) => {
+    return <Graph {...props} />;
+  },
+  'box-add': (props: IconProps) => {
+    return <BoxAdd {...props} />;
+  },
+  add: (props: IconProps) => {
+    return <Add {...props} />;
+  },
+  'arrow-left': (props: IconProps) => {
+    return <ArrowLeft {...props} />;
+  },
+  sort: (props: IconProps) => {
+    return <Sort {...props} />;
+  },
+  star: (props: IconProps) => {
+    return <Star {...props} />;
+  },
+  success: (props: IconProps) => {
+    return <Success {...props} />;
   }
 };
 

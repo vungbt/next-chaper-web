@@ -54,3 +54,10 @@ export interface IPaginationInput {
   totalPages?: number;
   count?: number;
 }
+
+export interface IMetadata {
+  page?: number;
+  pageSize?: number;
+  totalPages?: number;
+  count?: number;
+}

@@ -120,7 +120,7 @@ const Menu = ({
           <div key={index}>
             <div
               className={clsx('ease-linear transition-colors p-2', {
-                'bg-primary rounded-xl':
+                'bg-green-500 rounded-xl':
                   (pathname === item.href || active?.href === item.href) && !item.isFavorite
               })}
             >
