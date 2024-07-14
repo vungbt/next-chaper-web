@@ -6,6 +6,8 @@ html[data-theme='light'] {
   --tertiary-color: #ffc05d;
 
   // Default
+  --white: #ffffff;
+  --dark: var(--black);
   --green: #2e9570;
   --indigo: #243754;
   --yellow: #ffc05d;
@@ -15,11 +17,10 @@ html[data-theme='light'] {
   --black: #1b1b1b;
   --background: #f7fbe5;
 
-  // --white: #ffffff;
-  // --dark: var(--black);
-  // --success: var(--green);
-  // --danger: var(--red);
-  // --warning: var(--yellow);
+  --success: #20ac2e;
+  --info: #586ee0;
+  --danger: var(--red);
+  --warning: var(--yellow);
 
   // Green
   --green-900: #2e9570;
@@ -76,6 +77,8 @@ html[data-theme='light'] {
   --bg-700: #f9fceb;
   --bg-600: #fafcee;
   --bg-500: #fffdfa;
+
+  --gray-100: #efefef;
 
   // FONT FAMILY
   --font-primary: 'Roboto Mono', monospace;
