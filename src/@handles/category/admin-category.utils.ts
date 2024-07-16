@@ -1,4 +1,4 @@
-import { apiGetAllCategory } from '@/apis/categories';
+import { apiDeleteCategory, apiGetAllCategory, apiGetCategoryById } from '@/apis/categories';
 import { ESortOrder, ICategory, IFindManyCategory, IMetadata, IPaginationInput } from '@/types';
 import { useEffect, useState } from 'react';
 
@@ -18,7 +18,8 @@ type AdminCategoryUtilsResult = {
 export function AdminCategoryUtils(): AdminCategoryUtilsResult {
   const [loading, setLoading] = useState<boolean>(false);
   const [categories, setCategories] = useState<ICategory[]>([]);
-  const [loadingDelete] = useState<boolean>(false);
+  const [category, setCategory] = useState<ICategory>();
+  const [loadingDelete, setLoadingDelete] = useState<boolean>(false);
   const [metadata, setMetadata] = useState<IMetadata>();
   const [pagination, setPagination] = useState<IPaginationInput>({ page: 1, limit: 30 });
   // sort action
@@ -46,7 +47,16 @@ export function AdminCategoryUtils(): AdminCategoryUtilsResult {
     }
   };
 
-  const onDelete = (item: ICategory) => console.log('Delete item====>', item);
+  const onDelete = async (item: ICategory) => {
+    try {
+      setLoadingDelete(true);
+      await apiDeleteCategory(item.id);
+      setCategories(categories.filter((category) => category.id !== item.id));
+      setLoadingDelete(false);
+    } catch (error) {
+      setLoadingDelete(false);
+    }
+  };
 
   const onSort = (values: Record<string, ESortOrder>[]) => {
     console.log('Sort with====>', values);
