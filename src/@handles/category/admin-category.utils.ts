@@ -24,11 +24,12 @@ export function AdminCategoryUtils(): AdminCategoryUtilsResult {
   const [pagination, setPagination] = useState<IPaginationInput>({ page: 1, limit: 30 });
   // sort action
   const [sortActives, setSortActives] = useState<Record<string, ESortOrder>[]>([]);
+  const [searchValue, setQ] = useState<string>();
 
   useEffect(() => {
-    fetchingCategories();
+    fetchingCategories({ q: searchValue, page: pagination.page, pageSize: pagination.limit });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [pagination, sortActives, searchValue]);
 
   const fetchingCategories = async (params?: IFindManyCategory) => {
     try {
@@ -63,7 +64,7 @@ export function AdminCategoryUtils(): AdminCategoryUtilsResult {
     setSortActives(values);
   };
 
-  const setSearchValue = (value: string) => console.log('Value search');
+  const setSearchValue = (value: string) => setQ(value);
 
   return {
     loading,
