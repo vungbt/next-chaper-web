@@ -34,7 +34,8 @@
     "title": "Title",
     "link": "Link",
     "slug": "Slug",
-    "supported": "Supported {type}"
+    "supported": "Supported {type}",
+    "fullName": "Full name"
   },
   "selecting": {
     "charCount": "{count}/{max} {type, select, char {characters} word {words} other {}}"

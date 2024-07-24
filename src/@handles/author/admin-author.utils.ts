@@ -1,12 +1,14 @@
-import { apiDeleteCategory, apiGetAllCategory, apiGetCategoryById } from '@/apis/categories';
-import { ESortOrder, ICategory, IFindManyCategory, IMetadata, IPaginationInput } from '@/types';
+import { apiDeleteAuthor, apiGetAllAuthors } from '@/apis/author';
+
+import { ESortOrder, IMetadata, IPaginationInput } from '@/types';
+import { IAuthor, IFindManyAuthor } from '@/types/author';
 import { useEffect, useState } from 'react';
 
-type AdminCategoryUtilsResult = {
+type AdminAuthorUtilsResult = {
   loading: boolean;
-  items: ICategory[];
+  items: IAuthor[];
   loadingDelete: boolean;
-  onDelete: (item: ICategory) => void;
+  onDelete: (item: IAuthor) => void;
   sortActives: Record<string, ESortOrder>[];
   metadata?: IMetadata;
   onSort?: (values: Record<string, ESortOrder>[]) => void;
@@ -15,32 +17,30 @@ type AdminCategoryUtilsResult = {
   setPagination: (value: IPaginationInput) => void;
 };
 
-export function AdminCategoryUtils(): AdminCategoryUtilsResult {
+export function AdminAuthorUtils(): AdminAuthorUtilsResult {
   const [loading, setLoading] = useState<boolean>(false);
-  const [categories, setCategories] = useState<ICategory[]>([]);
-  const [category, setCategory] = useState<ICategory>();
+  const [authors, setAuthors] = useState<IAuthor[]>([]);
   const [loadingDelete, setLoadingDelete] = useState<boolean>(false);
   const [metadata, setMetadata] = useState<IMetadata>();
   const [pagination, setPagination] = useState<IPaginationInput>({ page: 1, limit: 30 });
   // sort action
   const [sortActives, setSortActives] = useState<Record<string, ESortOrder>[]>([]);
-  const [searchValue, setQ] = useState<string>();
 
   useEffect(() => {
-    fetchingCategories({ q: searchValue, page: pagination.page, pageSize: pagination.limit });
+    fetchingAuthors();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pagination, sortActives, searchValue]);
+  }, []);
 
-  const fetchingCategories = async (params?: IFindManyCategory) => {
+  const fetchingAuthors = async (params?: IFindManyAuthor) => {
     try {
       if (loading) return;
       setLoading(true);
-      const res = await apiGetAllCategory(params);
+      const res = await apiGetAllAuthors(params);
       setLoading(false);
       if (res?.data) {
         const { data, ...metadata } = res;
         setMetadata(metadata);
-        setCategories(res.data);
+        setAuthors(res.data);
       }
     } catch (error) {
       setLoading(false);
@@ -48,11 +48,11 @@ export function AdminCategoryUtils(): AdminCategoryUtilsResult {
     }
   };
 
-  const onDelete = async (item: ICategory) => {
+  const onDelete = async (item: IAuthor) => {
     try {
       setLoadingDelete(true);
-      await apiDeleteCategory(item.id);
-      setCategories(categories.filter((category) => category.id !== item.id));
+      await apiDeleteAuthor(item.id);
+      setAuthors(authors.filter((authors) => authors.id !== item.id));
       setLoadingDelete(false);
     } catch (error) {
       setLoadingDelete(false);
@@ -64,11 +64,11 @@ export function AdminCategoryUtils(): AdminCategoryUtilsResult {
     setSortActives(values);
   };
 
-  const setSearchValue = (value: string) => setQ(value);
+  const setSearchValue = (value: string) => console.log('Value search');
 
   return {
     loading,
-    items: categories,
+    items: authors,
     loadingDelete,
     onDelete,
     sortActives,
