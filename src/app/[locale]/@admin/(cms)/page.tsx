@@ -25,6 +25,11 @@ export default function AdminPage() {
         styleType="orange"
         onClick={() => router.push(RouterPath.Categories)}
       />
+      <Button
+        label="Author manage"
+        styleType="orange"
+        onClick={() => router.push(RouterPath.Author)}
+      />
     </div>
   );
 }
