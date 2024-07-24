@@ -24,6 +24,11 @@ export default async function AdminPrivateLayout({ children }: { children: React
           icon: 'box-add'
         },
         {
+          label: 'Author',
+          href: '/author',
+          icon: 'edit-icon'
+        },
+        {
           label: 'Setting',
           href: '/setting',
           icon: 'setting',
