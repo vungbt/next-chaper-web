@@ -4,5 +4,8 @@ export const RouterPath = {
   SignUp: '/auth/sign-up',
   ForgotPassword: '/auth/forgot-password',
   Categories: '/categories',
-  CategoriesAdd: '/categories/add'
+  CategoriesAdd: '/categories/add',
+  Scrap: '/scrap',
+  Contents: '/contents',
+  ContentsAdd: '/contents/add'
 };

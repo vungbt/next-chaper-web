@@ -2,8 +2,7 @@
 import { AdminCategoryColumns } from '@/@handles/category/admin-category-columns';
 import { AdminCategoryUtils } from '@/@handles/category/admin-category.utils';
 import { RouterPath } from '@/constants/router-path';
-import { Button, FunctionBar, Table } from '@/libraries/common';
-import { Link } from '@/utils/navigation';
+import { FunctionBar, Table } from '@/libraries/common';
 
 export default function CategoryPage() {
   const {

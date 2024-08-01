@@ -23,7 +23,7 @@ export const RadioGroup = ({
   options = [],
   className,
   styleType,
-  size = 'large',
+  size = 'middle',
   layout = 'horizontal',
   onChange
 }: RadioGroupProps) => {

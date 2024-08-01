@@ -15,7 +15,6 @@ export const getSession = async () => {
       //     return newSession;
       //   }
       // }
-      console.log('session====>', session);
       return session as Session;
     }
     // eslint-disable-next-line no-empty

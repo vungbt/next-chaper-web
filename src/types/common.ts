@@ -61,3 +61,14 @@ export interface IMetadata {
   totalPages?: number;
   count?: number;
 }
+
+export enum EContentType {
+  Page = 'page',
+  Chapter = 'chapter'
+}
+
+export enum EContentStatus {
+  Pending = 'pending',
+  Finish = 'finish',
+  Coming = 'coming'
+}

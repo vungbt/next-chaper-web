@@ -1,4 +1,3 @@
-import { IResponseBase } from '@/types';
 import { ICategory, ICreateCategory, IFindManyCategory } from '@/types/category';
 import axiosClient from '@/utils/apis/axios-client';
 
