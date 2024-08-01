@@ -1,4 +1,3 @@
-import { FallbackImage } from '@/constants/common';
 import { RouterPath } from '@/constants/router-path';
 import { ActionsTable, SortCell, TableColumn } from '@/libraries/common';
 import { ESortOrder, ICategory } from '@/types';

@@ -119,7 +119,8 @@ const config: Config = {
       },
       gray: {
         DEFAULT: 'var(--gray-100)',
-        100: 'var(--gray-100)'
+        100: 'var(--gray-100)',
+        200: 'var(--gray-200)'
       }
     },
     extend: {
@@ -163,6 +164,14 @@ const config: Config = {
         'red-hover': '0px 3px 8px 0px var(--red-500)',
         'black-hover': '0px 3px 8px 0px var(--black-500)',
         'dark-opacity': '0px 2px 10px 0px rgba(0, 0, 0, 0.12)'
+      },
+      aspectRatio: {
+        '4/3': '4 / 3',
+        '3/4': '3 / 4',
+        '3/2': '3 / 2',
+        '2/3': '2 / 3',
+        '16/9': '16 / 9',
+        '9/16': '9 / 16'
       }
     }
   },

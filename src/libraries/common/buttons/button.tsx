@@ -90,7 +90,10 @@ export const Button = forwardRef(function ButtonBase(
 
           // min width
           'justify-center gap-2 w-full': minWidth === 'full',
-          'justify-between min-w-fit w-fit': minWidth === 'fit'
+          'justify-between min-w-fit w-fit': minWidth === 'fit',
+
+          'cursor-not-allowed !bg-gray-200 !text-black-900': isDisabled,
+          'min-h-[38px]': size === 'large'
         },
         className
       )}

@@ -5,6 +5,9 @@
   "actions": "Actions",
   "no": "No",
   "common": {
+    "author": "Author",
+    "preview": "Preview",
+    "linkToScrap": "Link to scrap",
     "email": "Email",
     "username": "Username",
     "password": "Password",
@@ -25,16 +28,28 @@
     "settingKey": "Setting key",
     "settingType": "Setting type",
     "settingValue": "Setting value",
+    "setting": "Setting",
     "showWith": "Show with",
     "description": "Description",
     "thumbnails": "Thumbnails",
     "thumbnail": "Thumbnail",
     "content": "Content",
     "categories": "Categories",
+    "category": "Category",
     "title": "Title",
     "link": "Link",
     "slug": "Slug",
-    "supported": "Supported {type}"
+    "supported": "Supported {type}",
+    "scrap": "Scrap",
+    "startScrap": "Start scrap",
+    "submit": "Submit",
+    "chapter": "Chapter",
+    "page": "Page",
+    "pending": "Pending",
+    "comingSoon": "Coming soon",
+    "finish": "Finish",
+    "status": "Status",
+    "pageType": "Page type"
   },
   "selecting": {
     "charCount": "{count}/{max} {type, select, char {characters} word {words} other {}}"
@@ -62,5 +77,9 @@
     "fileNotInAccepts": "Please choose a file of type: {types}",
     "fileLarge": "Please choose a file that is smaller than {max}MB.",
     "fileInvalid": "Please choose a valid file."
+  },
+  "noti": {
+    "crawlerContentSuccess": "Crawler content page successfully",
+    "crawlerContentFailed": "Crawler content page failed"
   }
 }
