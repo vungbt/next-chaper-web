@@ -1,25 +1,26 @@
 import { FallbackImage } from '@/constants/common';
 import { RouterPath } from '@/constants/router-path';
 import { ActionsTable, SortCell, TableColumn } from '@/libraries/common';
-import { ESortOrder, ICategory } from '@/types';
+import { ESortOrder } from '@/types';
+import { IAuthor } from '@/types/author';
 import { formatDate } from '@/utils/helpers/formatter';
 import { Link, useRouter } from '@/utils/navigation';
 import { useTranslations } from 'next-intl';
 
-export const AdminCategoryColumns = ({
+export const AdminAuthorColumns = ({
   onDelete,
   onSort,
   sortActives
 }: {
   sortActives: Record<string, ESortOrder>[];
-  onDelete: (item: ICategory) => void;
+  onDelete: (item: IAuthor) => void;
   onSort?: (values: Record<string, ESortOrder>[]) => void;
-}): TableColumn<ICategory>[] => {
+}): TableColumn<IAuthor>[] => {
   const t = useTranslations();
   const router = useRouter();
 
-  const onGoToDetail = (row: ICategory) => {
-    router.push(`${RouterPath.CategoriesAdd}?id=${row.id}`);
+  const onGoToDetail = (row: IAuthor) => {
+    router.push(`${RouterPath.AuthorAdd}?id=${row.id}`);
   };
 
   return [
@@ -33,19 +34,15 @@ export const AdminCategoryColumns = ({
     {
       title: (
         <SortCell
-          sortType="name"
+          sortType="fullName"
           actives={sortActives}
-          title={t('common.name')}
+          title={t('common.fullName')}
           onSortHandler={(values) => onSort && onSort(values)}
         />
       ),
-      render: (row: ICategory) => (
-        <Link href={`${RouterPath.CategoriesAdd}?id=${row.id}`}>{row.name}</Link>
+      render: (row: IAuthor) => (
+        <Link href={`${RouterPath.AuthorAdd}?id=${row.id}`}>{row.fullName}</Link>
       )
-    },
-    {
-      title: t('common.slug'),
-      render: 'slug'
     },
     {
       title: (
@@ -56,7 +53,7 @@ export const AdminCategoryColumns = ({
           onSortHandler={(values) => onSort && onSort(values)}
         />
       ),
-      render: (item: ICategory) => <>{formatDate(item.createdAt)}</>
+      render: (item: IAuthor) => <>{formatDate(item.createdAt)}</>
     },
     {
       title: (
@@ -67,7 +64,7 @@ export const AdminCategoryColumns = ({
           onSortHandler={(values) => onSort && onSort(values)}
         />
       ),
-      render: (item: ICategory) => <>{formatDate(item.updatedAt)}</>
+      render: (item: IAuthor) => <>{formatDate(item.updatedAt)}</>
     },
     {
       title: t('actions'),

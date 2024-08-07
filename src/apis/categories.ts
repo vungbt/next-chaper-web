@@ -1,3 +1,4 @@
+import { IResponseBase } from '@/types';
 import { ICategory, ICreateCategory, IFindManyCategory } from '@/types/category';
 import axiosClient from '@/utils/apis/axios-client';
 
@@ -18,8 +19,8 @@ export const apiCreateCategory = async (body: ICreateCategory) => {
 };
 
 export const apiUpdateCategory = async (id: string, body: ICreateCategory) => {
-  const res = await axiosClient.post<ICreateCategory, ICategory>(
-    `${apiName.Categories}/update/${id}`,
+  const res = await axiosClient.put<ICreateCategory, ICategory>(
+    `${apiName.Categories}/${id}`,
     body,
     {
       authorization: true

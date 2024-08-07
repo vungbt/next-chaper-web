@@ -1,25 +1,26 @@
 'use client';
 
-import { AdminCategoryActionUtils } from '@/@handles/category/admin-category-acton.utils';
-import { Button, InputForm, TextareaForm, Upload } from '@/libraries/common';
+import React from 'react';
+
+import { Button, InputForm, TextareaForm, Upload, UploadItem } from '@/libraries/common';
 import { validationCustoms } from '@/utils/helpers/validation';
 import { Field, Form, Formik } from 'formik';
 import { useTranslations } from 'next-intl';
 import * as Yup from 'yup';
+import { AdminAuthorActionUtils } from '@/@handles/author/admin-author-acton.utils';
 
-export default function AddCategoryPage() {
+export default function AddAuthorPage() {
   const t = useTranslations();
-  const { loading, handleSubmit, isDetail, formikRef, category } = AdminCategoryActionUtils();
+  const { loading, formikRef, isDetail, handleSubmit, author } = AdminAuthorActionUtils();
 
   const initialValues = {
-    name: category?.name ?? '',
-    description: category?.description ?? '',
-    thumbnail: category?.thumbnail ?? null
+    fullName: author?.fullName ?? '',
+    avatar: author?.avatar ?? null,
+    thumbnail: author?.thumbnail ?? null
   };
-
   const validationSchema = Yup.object({
-    name: Yup.string().required(
-      t('validation.required', { label: t('common.name').toLowerCase() })
+    fullName: Yup.string().required(
+      t('validation.required', { label: t('common.fullName').toLowerCase() })
     ),
     thumbnail: validationCustoms.upload(t, t('common.thumbnail'))
   });
@@ -37,26 +38,32 @@ export default function AddCategoryPage() {
         {({ setFieldValue, values, errors, touched, setErrors }) => (
           <Form className="flex flex-col gap-6">
             <Field
-              label={t('common.name')}
+              label={t('common.fullName')}
               isRequired
-              name="name"
+              name="fullName"
               iconRight="arrow-right"
               component={InputForm}
               placeholder={t('placeholder.enter', {
-                label: t('common.name').toLowerCase()
-              })}
-            />
-            <Field
-              label={t('common.description')}
-              name="description"
-              component={TextareaForm}
-              placeholder={t('placeholder.enter', {
-                label: t('common.description').toLowerCase()
+                label: t('common.fullName').toLowerCase()
               })}
             />
             <Upload
               isRequired={true}
-              label="File upload"
+              label="Upload avatar"
+              name="avatar"
+              isTouched={touched.avatar !== undefined}
+              value={values?.avatar as any}
+              placeholder="Drop or Drag a photo"
+              subPlaceholder="Supported png, jpeg, jpg, webp, gif"
+              onChange={(value) => {
+                setFieldValue('avatar', value);
+              }}
+              error={errors?.avatar as string}
+              setError={(mess) => setErrors(mess)}
+            />
+            <Upload
+              isRequired={true}
+              label="Upload thumbnail"
               name="thumbnail"
               isTouched={touched.thumbnail !== undefined}
               value={values?.thumbnail as any}
@@ -68,9 +75,10 @@ export default function AddCategoryPage() {
               error={errors?.thumbnail as string}
               setError={(mess) => setErrors(mess)}
             />
+
             <Button
               isLoading={loading}
-              label={isDetail ? t('Update Category') : t('Create Category')}
+              label={isDetail ? t('Update Author') : t('Create Author')}
               type="submit"
             />
           </Form>

@@ -1,5 +1,6 @@
-import { IUser } from '@/types';
+import { IResponseBase, IUser } from '@/types';
 import { ISignInReq, ISignInRes } from '@/types/auth';
+import { ICategory, ICreateCategory, IFindManyCategory } from '@/types/category';
 import axiosClient from '@/utils/apis/axios-client';
 
 const apiName = {

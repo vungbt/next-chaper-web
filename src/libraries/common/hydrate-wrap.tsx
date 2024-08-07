@@ -1,4 +1,3 @@
-'use client';
 import React, { Fragment, ReactNode, useEffect, useState } from 'react';
 import { RenderIcon } from '../icons';
 

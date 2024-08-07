@@ -1,4 +1,3 @@
-'use client';
 import { IconName } from '@/libraries/icons';
 import clsx from 'clsx';
 import { ErrorMessage, FieldInputProps, FormikProps } from 'formik';

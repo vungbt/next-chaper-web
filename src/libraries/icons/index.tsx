@@ -33,11 +33,6 @@ import ArrowLeft from './arrow-left';
 import Success from './success';
 import Star from './star';
 import Sort from './sort';
-import GlobalSearch from './global-search';
-import Danger from './danger';
-import DangerSolid from './danger-solid';
-import DateIcon from './date-icon';
-import DocumentText from './document-text';
 
 export type IconProps = {
   className?: string;
@@ -82,12 +77,7 @@ export type IconName =
   | 'arrow-left'
   | 'sort'
   | 'star'
-  | 'success'
-  | 'global-search'
-  | 'danger-solid'
-  | 'danger'
-  | 'date-icon'
-  | 'document-text';
+  | 'success';
 
 export type IconsType = Record<IconName, Icon>;
 
@@ -193,21 +183,6 @@ export const Icons: IconsType = {
   },
   success: (props: IconProps) => {
     return <Success {...props} />;
-  },
-  'global-search': (props: IconProps) => {
-    return <GlobalSearch {...props} />;
-  },
-  danger: (props: IconProps) => {
-    return <Danger {...props} />;
-  },
-  'danger-solid': (props: IconProps) => {
-    return <DangerSolid {...props} />;
-  },
-  'date-icon': (props: IconProps) => {
-    return <DateIcon {...props} />;
-  },
-  'document-text': (props: IconProps) => {
-    return <DocumentText {...props} />;
   }
 };
 

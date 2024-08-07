@@ -1,11 +1,11 @@
 'use client';
-import { AdminCategoryColumns } from '@/@handles/category/admin-category-columns';
-import { AdminCategoryUtils } from '@/@handles/category/admin-category.utils';
+import { AdminAuthorColumns } from '@/@handles/author/admin-author-columns';
+import { AdminAuthorUtils } from '@/@handles/author/admin-author.utils';
 import { RouterPath } from '@/constants/router-path';
 import { Button, FunctionBar, Table } from '@/libraries/common';
 import { Link } from '@/utils/navigation';
 
-export default function CategoryPage() {
+export default function AuthorPage() {
   const {
     items,
     loading,
@@ -17,12 +17,12 @@ export default function CategoryPage() {
     onSort,
     sortActives,
     setSearchValue
-  } = AdminCategoryUtils();
+  } = AdminAuthorUtils();
 
   return (
     <div>
       <FunctionBar
-        addUrl={RouterPath.CategoriesAdd}
+        addUrl={RouterPath.AuthorAdd}
         onSearch={setSearchValue}
         // pagination top
         pagination={{
@@ -34,7 +34,7 @@ export default function CategoryPage() {
       />
       <Table
         tableId="testTable"
-        columns={AdminCategoryColumns({ onDelete, onSort, sortActives })}
+        columns={AdminAuthorColumns({ onDelete, onSort, sortActives })}
         rows={items}
         loading={loading || loadingDelete}
         total={metadata?.count ?? 0}

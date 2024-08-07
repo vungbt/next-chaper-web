@@ -1,12 +1,6 @@
 import { IFetchBase, IItemBase } from './common';
 import { IFile } from './file';
 
-export interface ICreateAuthor {
-  fullName: string;
-  publicId?: string;
-  publicAvatarId?: string;
-}
-
 export interface IAuthor extends IItemBase {
   fullName: string;
   avatarId?: string;
@@ -15,6 +9,18 @@ export interface IAuthor extends IItemBase {
   thumbnail?: IFile;
 }
 
-export interface IFindManyAuthor extends IFetchBase {
+export interface IAuthorAttributes {
+  fullName: string;
+  avatarId?: string;
+  thumbnailId?: string;
+}
+
+export interface ICreateAuthor {
+  fullName: string;
+  avatarUrlId?: string;
+  thumbnailUrlId?: string;
+}
+
+export interface IFindManyAuthor {
   q?: string;
 }

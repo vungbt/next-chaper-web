@@ -1,4 +1,3 @@
-'use client';
 import { FILE_IMAGE } from '@/constants/common';
 import { RenderIcon } from '@/libraries/icons';
 import clsx from 'clsx';
