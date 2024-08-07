@@ -7,17 +7,17 @@ import { validationCustoms } from '@/utils/helpers/validation';
 import { Field, Form, Formik } from 'formik';
 import { useTranslations } from 'next-intl';
 import * as Yup from 'yup';
-import { useSearchQuery } from '@/utils/navigation';
 import { AdminAuthorActionUtils } from '@/@handles/author/admin-author-acton.utils';
 
 export default function AddAuthorPage() {
   const t = useTranslations();
-  const { loading, formikRef, useFetchAuthorDetails, handleSubmit } = AdminAuthorActionUtils();
-  const { searchQuery } = useSearchQuery<{ id: string }>();
-  const id = searchQuery?.id;
+  const { loading, formikRef, isDetail, handleSubmit, author } = AdminAuthorActionUtils();
 
-  const { initialValues } = useFetchAuthorDetails(id);
-
+  const initialValues = {
+    fullName: author?.fullName ?? '',
+    avatar: author?.avatar ?? null,
+    thumbnail: author?.thumbnail ?? null
+  };
   const validationSchema = Yup.object({
     fullName: Yup.string().required(
       t('validation.required', { label: t('common.fullName').toLowerCase() })
@@ -32,8 +32,7 @@ export default function AddAuthorPage() {
         initialValues={initialValues}
         validationSchema={validationSchema}
         loading={loading}
-        //@ts-ignore
-        onSubmit={(values, actions) => handleSubmit(id, values, initialValues, actions)}
+        onSubmit={handleSubmit}
         enableReinitialize
       >
         {({ setFieldValue, values, errors, touched, setErrors }) => (
@@ -53,7 +52,7 @@ export default function AddAuthorPage() {
               label="Upload avatar"
               name="avatar"
               isTouched={touched.avatar !== undefined}
-              value={values?.avatar}
+              value={values?.avatar as any}
               placeholder="Drop or Drag a photo"
               subPlaceholder="Supported png, jpeg, jpg, webp, gif"
               onChange={(value) => {
@@ -67,7 +66,7 @@ export default function AddAuthorPage() {
               label="Upload thumbnail"
               name="thumbnail"
               isTouched={touched.thumbnail !== undefined}
-              value={values?.thumbnail}
+              value={values?.thumbnail as any}
               placeholder="Drop or Drag a photo"
               subPlaceholder="Supported png, jpeg, jpg, webp, gif"
               onChange={(value) => {
@@ -79,7 +78,7 @@ export default function AddAuthorPage() {
 
             <Button
               isLoading={loading}
-              label={id ? 'Update Author' : 'Create Author'}
+              label={isDetail ? t('Update Author') : t('Create Author')}
               type="submit"
             />
           </Form>

@@ -1,24 +1,21 @@
 'use client';
 
-import React from 'react';
-import {
-  AdminCategoryActionUtils,
-  CategoryFormValues
-} from '@/@handles/category/admin-category-acton.utils';
-import { Button, InputForm, TextareaForm, Upload, UploadItem } from '@/libraries/common';
+import { AdminCategoryActionUtils } from '@/@handles/category/admin-category-acton.utils';
+import { Button, InputForm, TextareaForm, Upload } from '@/libraries/common';
 import { validationCustoms } from '@/utils/helpers/validation';
 import { Field, Form, Formik } from 'formik';
 import { useTranslations } from 'next-intl';
 import * as Yup from 'yup';
-import { useSearchQuery } from '@/utils/navigation';
 
 export default function AddCategoryPage() {
   const t = useTranslations();
-  const { loading, handleSubmit, formikRef, useFetchCategoryDetails } = AdminCategoryActionUtils();
-  const { searchQuery } = useSearchQuery<{ id: string }>();
-  const id = searchQuery?.id;
+  const { loading, handleSubmit, isDetail, formikRef, category } = AdminCategoryActionUtils();
 
-  const { initialValues } = useFetchCategoryDetails(id);
+  const initialValues = {
+    name: category?.name ?? '',
+    description: category?.description ?? '',
+    thumbnail: category?.thumbnail ?? null
+  };
 
   const validationSchema = Yup.object({
     name: Yup.string().required(
@@ -34,8 +31,7 @@ export default function AddCategoryPage() {
         initialValues={initialValues}
         validationSchema={validationSchema}
         loading={loading}
-        //@ts-ignore
-        onSubmit={(values, actions) => handleSubmit(id, values, initialValues, actions)}
+        onSubmit={handleSubmit}
         enableReinitialize
       >
         {({ setFieldValue, values, errors, touched, setErrors }) => (
@@ -63,7 +59,7 @@ export default function AddCategoryPage() {
               label="File upload"
               name="thumbnail"
               isTouched={touched.thumbnail !== undefined}
-              value={values?.thumbnail}
+              value={values?.thumbnail as any}
               placeholder="Drop or Drag a photo"
               subPlaceholder="Supported png, jpeg, jpg, webp, gif"
               onChange={(value) => {
@@ -74,7 +70,7 @@ export default function AddCategoryPage() {
             />
             <Button
               isLoading={loading}
-              label={id ? 'Update Category' : 'Create Category'}
+              label={isDetail ? t('Update Category') : t('Create Category')}
               type="submit"
             />
           </Form>

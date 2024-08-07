@@ -1,9 +1,12 @@
 import { IFetchBase, IItemBase } from './common';
+import { IFile } from './file';
 
 export interface IAuthor extends IItemBase {
   fullName: string;
   avatarId?: string;
+  avatar?: IFile;
   thumbnailId?: string;
+  thumbnail?: IFile;
 }
 
 export interface IAuthorAttributes {

@@ -1,80 +1,62 @@
-import { useEffect, useState, useRef, RefObject } from 'react';
+import { useEffect, useState, useRef, RefObject, useMemo } from 'react';
 import { apiCreateCategory, apiGetCategoryById, apiUpdateCategory } from '@/apis/categories';
 import { toastError, toastSuccess } from '@/configs/toast';
 import { UploadItem } from '@/libraries/common';
-import { ICategory } from '@/types';
+import { ICategory, ICreateCategory } from '@/types';
 import { upload } from '@/utils/upload';
 import { FormikProps } from 'formik';
+import { useSearchQuery } from '@/utils/navigation';
 
 type AdminCategoryActionUtilsResult = {
-  handleSubmit: (
-    id: string | null,
-    values: CategoryFormValues,
-    initialValues: CategoryFormValues,
-    actions: any
-  ) => Promise<void>;
-  useFetchCategoryDetails: (id: string | undefined) => {
-    initialValues: CategoryFormValues;
-    loading: boolean;
-  };
+  handleSubmit: (values: ICategory) => Promise<void>;
+  category: ICategory | null;
   loading: boolean;
-  formikRef: RefObject<FormikProps<CategoryFormValues>>;
+  isDetail: boolean;
+  formikRef: any;
 };
 
 export type CategoryFormValues = {
   name: string;
   description?: string;
-  thumbnail: UploadItem;
+  thumbnail?: UploadItem | null;
 };
 
 export function AdminCategoryActionUtils(): AdminCategoryActionUtilsResult {
   const [loading, setLoading] = useState<boolean>(false);
-  const formikRef = useRef<FormikProps<CategoryFormValues>>(null);
+  const formikRef = useRef<FormikProps<ICreateCategory>>(null);
 
-  const useFetchCategoryDetails = (id: string | undefined) => {
-    const [initialValues, setInitialValues] = useState<CategoryFormValues>({
-      name: '',
-      description: '',
-      //@ts-ignore
-      thumbnail: null
-    });
+  // detail category
+  const { searchQuery } = useSearchQuery<{ id: string }>();
+  const id = searchQuery?.id;
+  const isDetail = useMemo(() => !!id, [id]);
+  const [category, setCategory] = useState<ICategory | null>(null);
 
-    useEffect(() => {
-      const fetchData = async () => {
-        if (id) {
-          try {
-            setLoading(true);
-            const res = await apiGetCategoryById(id);
-            setInitialValues({
-              name: res.name,
-              description: res.description,
-              //@ts-ignore
-              thumbnail: res.thumbnail
-            });
-            setLoading(false);
-          } catch (error) {
-            setLoading(false);
-            console.error('Failed to fetch category:', error);
-          }
-        }
-      };
+  useEffect(() => {
+    if (id && id.length > 0) {
+      fetchCategoryDetails(id);
+    }
+  }, [id]);
 
-      fetchData();
-    }, [id]);
-
-    return { initialValues, loading };
+  const fetchCategoryDetails = async (id: string | undefined) => {
+    try {
+      if (loading || !id) return;
+      setLoading(true);
+      const res = await apiGetCategoryById(id);
+      setLoading(false);
+      if (res) {
+        setCategory(res);
+      }
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
-  const onSubmitCategory = async (
-    id: string | null,
-    values: CategoryFormValues,
-    initialThumbnail?: UploadItem
-  ) => {
+  const handleSubmit = async (values: any) => {
     try {
       if (loading) return;
       setLoading(true);
 
-      let publicId = initialThumbnail?.id || null;
+      let publicId = category?.thumbnailId || null;
       const thumbnail = values.thumbnail;
 
       if (thumbnail && thumbnail.file) {
@@ -106,7 +88,6 @@ export function AdminCategoryActionUtils(): AdminCategoryActionUtilsResult {
         formikRef.current?.resetForm();
         toastSuccess('Create category success');
       }
-
       setLoading(false);
       if (!res) throw new Error('Operation failed');
     } catch (error) {
@@ -115,32 +96,11 @@ export function AdminCategoryActionUtils(): AdminCategoryActionUtilsResult {
     }
   };
 
-  const handleSubmit = async (
-    id: string | null,
-    values: CategoryFormValues,
-    initialValues: CategoryFormValues,
-    actions: any
-  ) => {
-    const formData: CategoryFormValues = { ...values };
-
-    if (!formData.thumbnail.id && initialValues.thumbnail.id) {
-      formData.thumbnail = initialValues.thumbnail;
-    }
-
-    try {
-      await onSubmitCategory(id, formData, initialValues.thumbnail);
-      if (!id) {
-        actions.resetForm();
-      }
-    } catch (error) {
-      console.error('Failed to submit form:', error);
-    }
-  };
-
   return {
     loading,
+    isDetail,
     formikRef,
-    handleSubmit,
-    useFetchCategoryDetails
+    category,
+    handleSubmit
   };
 }
