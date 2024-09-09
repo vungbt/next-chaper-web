@@ -12,3 +12,4 @@ export * from './modal';
 export * from './steps';
 export * from './tags';
 export * from './selects';
+export * from './cards';
