@@ -18,7 +18,6 @@ type AdminCategoryUtilsResult = {
 export function AdminCategoryUtils(): AdminCategoryUtilsResult {
   const [loading, setLoading] = useState<boolean>(false);
   const [categories, setCategories] = useState<ICategory[]>([]);
-  const [category, setCategory] = useState<ICategory>();
   const [loadingDelete, setLoadingDelete] = useState<boolean>(false);
   const [metadata, setMetadata] = useState<IMetadata>();
   const [pagination, setPagination] = useState<IPaginationInput>({ page: 1, limit: 30 });
@@ -26,9 +25,9 @@ export function AdminCategoryUtils(): AdminCategoryUtilsResult {
   const [sortActives, setSortActives] = useState<Record<string, ESortOrder>[]>([]);
 
   useEffect(() => {
-    fetchingCategories();
+    fetchingCategories({ orders: sortActives });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [sortActives]);
 
   const fetchingCategories = async (params?: IFindManyCategory) => {
     try {
@@ -59,7 +58,6 @@ export function AdminCategoryUtils(): AdminCategoryUtilsResult {
   };
 
   const onSort = (values: Record<string, ESortOrder>[]) => {
-    console.log('Sort with====>', values);
     setSortActives(values);
   };
 

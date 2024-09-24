@@ -39,19 +39,16 @@ export default function TestPage() {
     thumbnails: UploadItem[];
     thumbnail: UploadItem;
   }) => {
-    // console.log('values===>', values);
     const thumbnails = values?.thumbnails ?? [];
     const thumbnail = values?.thumbnail ?? [];
 
     if (thumbnails && thumbnails.length > 0) {
       const files = thumbnails.map((item) => item.file);
       const res = await upload.uploadFiles(files);
-      console.log('Upload multiple====>', res);
     }
     if (thumbnail && thumbnail.file) {
       const file = thumbnail.file;
       const res = await upload.uploadFile(file);
-      console.log('Upload single====>', res);
     }
   };
 
