@@ -31,6 +31,7 @@ export interface IItemBase {
 export interface IFetchBase {
   page?: number;
   pageSize?: number;
+  orders?: any;
 }
 
 export enum EUserRole {

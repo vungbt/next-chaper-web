@@ -1,5 +1,5 @@
 import { toastError } from '@/configs/toast';
-import { format, formatDistance } from 'date-fns';
+import { format, formatDistance, formatDistanceToNow, isToday, isYesterday } from 'date-fns';
 
 export enum EDateFormat {
   MM_dd_yyyy = 'MM/dd/yyyy',
@@ -27,4 +27,29 @@ export const getErrorMss = (error: any, defaultMess?: string) => {
   if (!newMessError || newMessError.length <= 0) return;
 
   toastError(newMessError);
+};
+
+export const formatTimeAgo = (createdAt: Date, t: any): string => {
+  const now = new Date();
+
+  if (isToday(createdAt)) {
+    return `TODAY ${format(createdAt, 'hh:mm a')}`;
+  }
+
+  if (isYesterday(createdAt)) {
+    return `YESTERDAY ${format(createdAt, 'hh:mm a')}`;
+  }
+
+  const diffInMinutes = Math.abs((now.getTime() - createdAt.getTime()) / 60000);
+
+  if (diffInMinutes < 60) {
+    return `${Math.round(diffInMinutes)} minutes ago`;
+  }
+
+  if (diffInMinutes < 1440) {
+    const diffInHours = Math.floor(diffInMinutes / 60);
+    return `${diffInHours} hours ago`;
+  }
+
+  return formatDistanceToNow(createdAt, { addSuffix: true });
 };

@@ -80,6 +80,14 @@
   },
   "noti": {
     "crawlerContentSuccess": "Crawler content page successfully",
-    "crawlerContentFailed": "Crawler content page failed"
+    "crawlerContentFailed": "Crawler content page failed",
+    "updatedSuccess": "{label} updated successfully!",
+    "updatedError": "Failed to update {label}. Please try again!",
+    "createdSuccess": "{label} created successfully!",
+    "createdError": "Failed to create {label}. Please try again!",
+    "deletedSuccess": "{label} deleted successfully!",
+    "deletedError": "Failed to delete {label}. Please try again!",
+    "uploadedSuccess": "{label} uploaded successfully!",
+    "uploadedError": "Failed to uploaded {label}. Please try again!"
   }
 }

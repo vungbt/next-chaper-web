@@ -7,6 +7,7 @@ import axios, {
 } from 'axios';
 import { format } from 'date-fns';
 import queryString from 'query-string';
+import merge from 'lodash/merge';
 import { getSession } from '../session';
 
 const getLabelLogRequest = (config: InternalAxiosRequestConfig) => {
@@ -20,7 +21,13 @@ const getLabelLogRequest = (config: InternalAxiosRequestConfig) => {
 export const instance = axios.create({
   baseURL: process.env.API_DOMAIN,
   timeout: 10000,
-  paramsSerializer: (params: Record<string, any>) => queryString.stringify(params)
+  paramsSerializer: (params: Record<string, any>) => {
+    let newParams = { ...params };
+    if (params?.orders && Array.isArray(params.orders)) {
+      newParams.orders = JSON.stringify(params.orders);
+    }
+    return queryString.stringify(newParams);
+  }
 });
 
 // Add a request interceptor

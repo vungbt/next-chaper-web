@@ -31,7 +31,6 @@ export default function AdminContentActionUtils(): AdminContentActionResult {
   }, []);
 
   const onSubmit = async (values: ICreateContent) => {
-    console.log('values====>', values);
     try {
       if (loading) return;
       setLoading(true);

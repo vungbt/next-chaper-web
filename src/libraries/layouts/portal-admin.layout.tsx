@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { ReactNode, useRef, useState } from 'react';
 import { SideBar, SidebarMenu } from './sidebar';
+import LeftSidebar from './sidebars/left.sidebar';
 
 export function PortalAdminLayout(props: { children: ReactNode; menus?: SidebarMenu[] }) {
   const { profile } = useProfile();
@@ -96,6 +97,9 @@ export function PortalAdminLayout(props: { children: ReactNode; menus?: SidebarM
         </div>
         <div className="p-7 portal-content-layout">{props.children}</div>
       </div>
+
+      {/* notification */}
+      <LeftSidebar />
 
       {/* overlay */}
       <label htmlFor="admin-sidebar" className="admin-sidebar-overlay"></label>
